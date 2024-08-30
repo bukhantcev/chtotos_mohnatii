@@ -1,37 +1,290 @@
-{% load static %}
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static  'main/css/main.css' %}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.6.0/css/all.css">
-    <style>
-          a {
-          text-decoration: none;
-          }
-        </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Мой сайт</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../../static/main/css/scss.scss">
+  <link rel="stylesheet" href="../../static/main/css/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,900&display=swap"
+    rel="stylesheet">
 </head>
 
-<body>
-<aside>
-        <img src="{% static  'main/img/logo.svg' %}">
-        <span class="logo">Saab</span>
-        <h3>Навигация</h3>
-    <ul>
-        <a href="{% url 'home' %}"><li><i class="fa-sharp fa-solid fa-poo"></i> Главная</li></a>
-        <a href="{% url 'about' %}"><li><i class="fa-brands fa-servicestack"></i> Обо мне</li></a>
-        <a href="{% url 'about' %}"><li><i class="fa-brands fa-servicestack"></i> Услуги</li></a>
-        <a href=""><li><i class="fa-solid fa-address-card"></i> Контакты</li></a>
-        <a href="{% url 'users_home' %}"><li><i class="fa-solid fa-address-card"></i> Пользователи </li></a>
+<body class="p-1">
+  <h2>User form</h2>
 
-    </ul>
-</aside>
-{% block content %}{% endblock %}
+  <div class="wrapper">
+    <header>
+      <div class="container-fluid fixed-top">
+        <div class="row">
+          <div class="col-2"><!--logo-->
+            <div class="logo-test"><a href=""><img src="../../static/main/img/logo-test.png" alt=""></a></div>
+          </div><!--logo-->
+          <div class="col-8 d-none d-lg-block"><!--navbar-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-none">
+              <div class="container-fluid justify-content-center">
+                <div class="navbar" id="navbarNavDropdown">
+                  <ul class="navbar-nav  justify-content-center">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                      data-bs-toggle="dropdown" aria-expanded="false">
+                      ХПЧ
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><button type="button" class="btn btn-link text-decoration-none" data-bs-dismiss="offcanvas"
+                          aria-label="Close"><a class="nav-link active" aria-current="page"
+                            href="#main">Свет</a></button></li>
+                      <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                            class="nav-link active" aria-current="page" href="#main">Звук</a></button></li>
+                      <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                            class="nav-link active" aria-current="page" href="#main">Видео</a></button></li>
+                      <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                            class="nav-link active" aria-current="page" href="#main">Машинисты</a></button></li>
+                      <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                            class="nav-link active" aria-current="page" href="#main">Реквизиторы</a></button></li>
+                      <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                            class="nav-link active" aria-current="page" href="#main">Костюмеры</a></button></li>
+                      <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                            class="nav-link active" aria-current="page" href="#main">Гриммеры</a></button></li>
+                    </ul>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#scrollspyHeading5">Спектакли</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Материалы к спектаклям</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Услуги
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><button type="button" class="btn btn-link text-decoration-none" data-bs-dismiss="offcanvas"
+                            aria-label="Close"><a class="nav-link active" aria-current="page"
+                              href="#main">Первая</a></button></li>
+                        <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                              class="nav-link active" aria-current="page" href="#main">Вторая</a></button></li>
+                        <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                              class="nav-link active" aria-current="page" href="#main">Третья</a></button></li>
+                        <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                              class="nav-link active" aria-current="page" href="#main">Четвертая</a></button></li>
+                        <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                              class="nav-link active" aria-current="page" href="#main">Пятая</a></button></li>
+                        <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                              class="nav-link active" aria-current="page" href="#main">Шестая</a></button></li>
+                        <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                              class="nav-link active" aria-current="page" href="#main">Седьмая</a></button></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div><!--navbar-->
+          <div class="col-2 d-none d-lg-block"><!--phone-number-->
+            <div class="header-top-phone d-flex align-items-center h-100 justify-content-end"">
+              <i class=" fa-solid fa-mobile-screen"></i>
+              <a href="tel:+1234567890" class="ms-2">123-456-7890</a>
+            </div>
+          </div><!--phone-number-->
+
+          <div class="col d-flex d-lg-none justify-content-end"><!--menu-button-->
+            <button class="btn btn-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
+              aria-controls="offcanvasTop"><i class="fa-solid fa-bars fa-flip-vertical fa-xl"
+                style="color: #242323;"></i></button>
+
+          </div><!--menu-button-->
+        </div>
+      </div>
+      <!--------------------------offcanvas------------------------>
+      <div class="offcanvas offcanvas-start w-50" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+          <div class="logo-test"><a href=""><img src="../../static/main/img/logo-test.png" alt=""></a></div>
+
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <!--navbar-->
+          <div class="offcanvas-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-none">
+              <div class="container-fluid">
+                <div class="navbar" id="navbarNavDropdown">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                          class="nav-link active" aria-current="page" href="#main">Главная</a></button>
+
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                      <button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                          class="nav-link active" aria-current="page" href="#main">Обо мне</a></button>
+                    </li>
+                    <li class="nav-item">
+                      <button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                          class="nav-link active" aria-current="page" href="#main">Еще что-то</a></button>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle ms-2" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Услуги
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><button type="button" class="btn btn-link text-decoration-none" data-bs-dismiss="offcanvas"
+                            aria-label="Close"><a class="nav-link active" aria-current="page"
+                              href="#main">Первая</a></button></li>
+                        <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                              class="nav-link active" aria-current="page" href="#main">Вторая</a></button></li>
+                        <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                              class="nav-link active" aria-current="page" href="#main">Третья</a></button></li>
+                        <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                              class="nav-link active" aria-current="page" href="#main">Четвертая</a></button></li>
+                        <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                              class="nav-link active" aria-current="page" href="#main">Пятая</a></button></li>
+                        <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                              class="nav-link active" aria-current="page" href="#main">Шестая</a></button></li>
+                        <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
+                              class="nav-link active" aria-current="page" href="#main">Седьмая</a></button></li>
+
+                      </ul>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+
+          </div>
+          <!--navbar-->
+
+        </div>
+      </div>
+      <!--------------------------offcanvas------------------------>
+    </header>
+    <main class="main" id="main">
+      <div class="main-header">
+        <div class="container-fluid h-100">
+          <p class="main-title text-center h1" style="margin-top: 8rem; margin-bottom: 3rem;">
+            Расписание
+          </p>
+          <div class="row">
+            <div class="col d-flex justify-content-center">
+              <div class="dropdown"><!--------------------------calendar------------------------>
+                <button class="btn btn-secondary dropdown-toggle" style="margin-bottom: 1rem; margin-right: 0.5rem;"
+                  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ current_month }}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <form accept="" method="post" id="myForm"></form>
+                  {% csrf_token %}
+                  {% autoescape off %}
+                  {{btn_month}}
+                  {% endautoescape %}
+                  </form>
+                </ul>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" style="margin-bottom: 1rem;" type="button"
+                  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{current_yer}}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">Действие</a></li>
+                  <li><a class="dropdown-item" href="#">Другое действие</a></li>
+                  <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--------------------------carusel------------------------>
+          <!--<div class="conteiner-fluid">
+            <div class="row">
+              <div class="col-4 offset-4 offset-sm-1">
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  </div>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="../../static/main/img/k1.jpg" class="d-block w-100" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>Метка первого слайда</h5>
+                        <p>Некоторый репрезентативный заполнитель для первого слайда.</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="../../static/main/img/k2.jpg" class="d-block w-100" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>Метка второго слайда</h5>
+                        <p>Некоторый репрезентативный заполнитель для второго слайда.</p>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <img src="../../static/main/img/k3.jpg" class="d-block w-100" alt="...">
+                      <div class="carousel-caption d-none d-md-block">
+                        <h5>Метка третьего слайда</h5>
+                        <p>Некоторый репрезентативный заполнитель для третьего слайда.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Предыдущий</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Следующий</span>
+                  </button>
+                </div>
+              </div>
+              <div class="col-sm-6 col">
+                <p class="main-text text-sm-start text-center">Учитывая ключевые сценарии поведения, высококачественный прототип будущего проекта способствует повышению
+                  качества своевременного выполнения сверхзадачи. Противоположная точка зрения подразумевает, что независимые
+                 </p>
+              </div>
+            </div>
+              </div>
+    
+            </div>
+          </div>-->
+          <!--------------------------carusel----------------------->
+        </div>
+        <div class="container">
+          <div class="row row-cols-3 row-cols-sm-5">
+            {% autoescape off %}
+            {{cal}}
+            {% endautoescape %}
+          </div>
+        </div><!--------------------------calendar------------------------>
+
+
+
+    </main>
+    <footer class="footer">
+      <divi id="footer">
+
+  </div>
+
+  </footer>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"
+    integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"></script>
+
 </body>
+
 </html>
