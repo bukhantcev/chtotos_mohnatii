@@ -14,12 +14,21 @@ current_year = datetime.datetime.now().year
 current_month = month_text[datetime.datetime.now().month]
 
 
+class Calendar:
+    current_year = datetime.datetime.now().year
+    current_month = datetime.datetime.now().month
+    month_text = {1: 'Январь', 2: 'Февраль', 3: 'Март', 4: 'Апрель', 5: 'Май', 6: 'Июнь', 7: 'Июль', 8: 'Август',
+                  9: 'Сентябрь', 10: 'Октябрь', 11: 'Ноябрь', 12: 'Декабрь'}
 
+    def cal_text(current_month):
+        return month_text(current_month)
+
+my_calendar = Calendar
 
 
 def calendar (result=''):
-    current_year = datetime.datetime.now().year
-    current_month = datetime.datetime.now().month
+    current_year = my_calendar.current_year
+    current_month = my_calendar.current_month
     days_quantity = monthrange(current_year, current_month)[1]
     weekdays = {0: 'Понедельник', 1: 'Вторник', 2: 'Среда', 3: 'Четверг', 4: 'Пятница', 5: 'Суббота', 6: 'Воскресенье'}
 
@@ -32,13 +41,13 @@ def calendar (result=''):
 def calendar_switch_month():
     month_text = {1: 'Январь', 2: 'Февраль', 3: 'Март', 4: 'Апрель', 5: 'Май', 6: 'Июнь', 7: 'Июль', 8: 'Август',
                   9: 'Сентябрь', 10: 'Октябрь', 11: 'Ноябрь', 12: 'Декабрь'}
-    current_month = datetime.datetime.now().month
     result = []
     final = ''
+    ind2 = 0
     for i in range(11):
-        ind = current_month
+        ind = my_calendar.current_month
         if i < (12-ind):
-            ind2 = 0
+
             ind = ind+i +1
             result.append(ind)
         else:
@@ -51,4 +60,3 @@ def calendar_switch_month():
 
 
     return final
-
