@@ -1,8 +1,6 @@
-from typing import final
-
-from django.db import models
 import datetime
 from calendar import monthrange
+from .db_manager import Events
 
 # Create your models here.
 
@@ -32,11 +30,21 @@ def calendar (result=''):       #--------------------------------------------DAY
     current_month = my_calendar.current_month
     days_quantity = monthrange(current_year, current_month)[1]
     weekdays = {0: 'Понедельник', 1: 'Вторник', 2: 'Среда', 3: 'Четверг', 4: 'Пятница', 5: 'Суббота', 6: 'Воскресенье'}
+    events = Events.events(Events)
+    event_dates = Events.get_date(Events)
 
 
     for i in range(days_quantity):
+        event_li = ''
         date = datetime.datetime(current_year, current_month, i+1)
-        result = result + f'<div class=col><div class=card><div class=card-header>{i+1} {weekdays[date.weekday()]}</div><div class=card-body><a class=link-sobitie href="#"><p class=sobitie>Kakoe-to sobitie</a></p><div class=card-footer>footer</div></div></div></div>\n'
+        for event in events:
+            ev_name = event[3]
+            ev_time = f'{str(event[1]).split(' ')[1].split(':')[0]}:{str(event[1]).split(' ')[1].split(':')[1]}'
+            ev_date = event[1]
+            ev_type = event[2]
+            if str(date).split(' ')[0] in str(ev_date).split(' ')[0]:
+                event_li = event_li + f'<li class="event_li"><a class=link-sobitie href="#">{ev_time} {ev_name}({ev_type})</a></li>\n'
+        result = result + f'<div class="col h-100"><div class="card"><div class="card-header">{i+1} {weekdays[date.weekday()]}</div><div class="card-body"><ul>{event_li}</ul></p><div class="card-footer">footer</div></div></div></div>\n'
     return result
 
 def calendar_switch_month(): #---------------------MONTS
