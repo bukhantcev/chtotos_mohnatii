@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Мой сайт</title>
+  <title>Мохнатый Шмель</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -20,14 +20,13 @@
 </head>
 
 <body class="p-1">
-  <h2>User form</h2>
 
   <div class="wrapper">
     <header>
       <div class="container-fluid fixed-top">
         <div class="row">
           <div class="col-2"><!--logo-->
-            <div class="logo-test"><a href=""><img src="../../static/main/img/logo-test.png" alt=""></a></div>
+            <div class="logo-test"><a href="{% url 'home' %}?home=home" type="submit"><img src="../../static/main/img/logoMH.png" alt=""></a></div>
           </div><!--logo-->
           <div class="col-8 d-none d-lg-block"><!--navbar-->
             <nav class="navbar navbar-expand-lg navbar-light bg-none">
@@ -64,12 +63,12 @@
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        Услуги
+                        Инструменты
                       </a>
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="min-width: 12rem;">
                         <li><button type="button" class="btn btn-link text-decoration-none" data-bs-dismiss="offcanvas"
                             aria-label="Close"><a class="nav-link active" aria-current="page"
-                              href="#main">Первая</a></button></li>
+                              href="{% url 'forms_home' %}">Добавить событие</a></button></li>
                         <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
                               class="nav-link active" aria-current="page" href="#main">Вторая</a></button></li>
                         <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
@@ -167,107 +166,7 @@
       </div>
       <!--------------------------offcanvas------------------------>
     </header>
-    <main class="main" id="main">
-      <div class="main-header">
-        <div class="container-fluid h-100">
-          <p class="main-title text-center h1" style="margin-top: 8rem; margin-bottom: 3rem;">
-            Расписание
-          </p>
-          <div class="row">
-            <div class="col d-flex justify-content-center">
-              <div class="dropdown"><!--------------------------calendar------------------------>
-                <button class="btn btn-secondary dropdown-toggle" style="margin-bottom: 1rem; margin-right: 0.5rem;"
-                  type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{ current_month }}
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <form accept="" method="post" id="myForm"></form>
-                  {% csrf_token %}
-                  {% autoescape off %}
-                  {{btn_month}}
-                  {% endautoescape %}
-                  </form>
-                </ul>
-              </div>
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" style="margin-bottom: 1rem;" type="button"
-                  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  {{current_yer}}
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="#">Действие</a></li>
-                  <li><a class="dropdown-item" href="#">Другое действие</a></li>
-                  <li><a class="dropdown-item" href="#">Что-то еще здесь</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <!--------------------------carusel------------------------>
-          <!--<div class="conteiner-fluid">
-            <div class="row">
-              <div class="col-4 offset-4 offset-sm-1">
-                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                  <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                  </div>
-                  <div class="carousel-inner">
-                    <div class="carousel-item active">
-                      <img src="../../static/main/img/k1.jpg" class="d-block w-100" alt="...">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Метка первого слайда</h5>
-                        <p>Некоторый репрезентативный заполнитель для первого слайда.</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img src="../../static/main/img/k2.jpg" class="d-block w-100" alt="...">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Метка второго слайда</h5>
-                        <p>Некоторый репрезентативный заполнитель для второго слайда.</p>
-                      </div>
-                    </div>
-                    <div class="carousel-item">
-                      <img src="../../static/main/img/k3.jpg" class="d-block w-100" alt="...">
-                      <div class="carousel-caption d-none d-md-block">
-                        <h5>Метка третьего слайда</h5>
-                        <p>Некоторый репрезентативный заполнитель для третьего слайда.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Предыдущий</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Следующий</span>
-                  </button>
-                </div>
-              </div>
-              <div class="col-sm-6 col">
-                <p class="main-text text-sm-start text-center">Учитывая ключевые сценарии поведения, высококачественный прототип будущего проекта способствует повышению
-                  качества своевременного выполнения сверхзадачи. Противоположная точка зрения подразумевает, что независимые
-                 </p>
-              </div>
-            </div>
-              </div>
-    
-            </div>
-          </div>-->
-          <!--------------------------carusel----------------------->
-        </div>
-        <div class="container">
-          <div class="row row-cols-3 row-cols-sm-5">
-            {% autoescape off %}
-            {{cal}}
-            {% endautoescape %}
-          </div>
-        </div><!--------------------------calendar------------------------>
-
-
-
-    </main>
+    {% block main %}{% endblock %}
     <footer class="footer">
       <divi id="footer">
 
