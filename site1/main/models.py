@@ -16,6 +16,7 @@ class Calendar:
     current_year = datetime.datetime.now().year
     current_month = datetime.datetime.now().month
     year_title = current_year
+
     month_text = {1: 'Январь', 2: 'Февраль', 3: 'Март', 4: 'Апрель', 5: 'Май', 6: 'Июнь', 7: 'Июль', 8: 'Август',
                   9: 'Сентябрь', 10: 'Октябрь', 11: 'Ноябрь', 12: 'Декабрь'}
 
@@ -44,7 +45,7 @@ def calendar (result=''):       #--------------------------------------------DAY
             ev_type = event[2]
             if str(date).split(' ')[0] in str(ev_date).split(' ')[0]:
                 event_li = event_li + f'<li class="event_li"><a class=link-sobitie href="#">{ev_time} {ev_name}({ev_type})</a></li>\n'
-        result = result + f'<div class="col h-100"><div class="card"><div class="card-header">{i+1} {weekdays[date.weekday()]}</div><div class="card-body"><ul>{event_li}</ul></p><div class="card-footer">footer</div></div></div></div>\n'
+        result = result + f'<div class="col h-100"><div class="card" style="height: 15rem"><div class="card-header">{i+1} {weekdays[date.weekday()]}</div><div class="card-body"><ul>{event_li}</ul></p></div></div></div>\n'
     return result
 
 def calendar_switch_month(): #---------------------MONTS
@@ -77,4 +78,3 @@ def calendar_switch_year(): #__________________________________YEARS
     real_year = datetime.datetime.now().year
     return {'current_year': current_year, 'next_year': next_year, 'real_year': real_year}
 #----------------------------------------------------------------------------------------CALENDAR
-
