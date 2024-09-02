@@ -90,8 +90,7 @@ class Events:
         return result
 
 
+
 #______________________________________________TABLE EVENTS________________________________________________
 
 
-time = Events.events(Events)[0]
-print(time)

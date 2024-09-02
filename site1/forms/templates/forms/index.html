@@ -9,18 +9,72 @@
     <div class="form-wrapper">
         <div class="row">
             <div class="col">
-                <h1 class="zagolovok" style="margin-top: 5rem;">Форма добавления нового события </h1>
+                <h1 class="zagolovok text-center" style="margin-top: 5rem;">Форма добавления нового события </h1>
             </div>
         </div>
     </div>
 </div>
-{% for el in events %}
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="container-fluid d-flex flex-column" style="padding-top: 8rem;">
+        <div class="row">
+            <div class="col col-sm-4 offset-sm-4 justify-content-center h-100">
+                {{ form.date }}
+                {{ form.type }}
+                {{ form.name }}
+                {{ form.location }}
+                <h5 class="staf-tittle text-center">Вызываются службы:</h5>
+                <div class="container-fluid d-flex">
+                    <div class="form-check form-switch" style="margin-right: 1rem;">
+                        <input class="form-check-input" value="svet" name="staff" type="checkbox" id="svet" checked>
+                        <label class="form-check-label" for="for">Свет</label>
+                      </div>
+                      <div class="form-check form-switch" style="margin-right: 1rem;">
+                        <input class="form-check-input" value="zvuk" name="staff" type="checkbox" id="svet" checked>
+                        <label class="form-check-label" for="for">Звук</label>
+                      </div>
+                      <div class="form-check form-switch" style="margin-right: 1rem;">
+                        <input class="form-check-input" value="video" name="staff" type="checkbox" id="svet" checked>
+                        <label class="form-check-label" for="for">Видео</label>
+                      </div>
+                      <div class="form-check form-switch" style="margin-right: 1rem;">
+                        <input class="form-check-input" value="decor" name="staff" type="checkbox" id="svet" checked>
+                        <label class="form-check-label" for="for">Декорации</label>
+                      </div>
+                    </div>
+                      <div class="container-fluid d-flex" style="margin-right: 1rem;">
+                      <div class="form-check form-switch">
+                        <input class="form-check-input" value="rekvizit" name="staff" type="checkbox" id="svet" checked>
+                        <label class="form-check-label" for="for">Реквизит</label>
+                      </div>
+                      <div class="form-check form-switch" style="margin-right: 1rem;">
+                        <input class="form-check-input" value="grim" name="staff" type="checkbox" id="svet" checked>
+                        <label class="form-check-label" for="for">Грим</label>
+                      </div>
+                      <div class="form-check form-switch" style="margin-right: 1rem;">
+                        <input class="form-check-input" value="kostum" name="staff" type="checkbox" id="svet" checked>
+                        <label class="form-check-label" for="for">Костюм</label>
+                      </div>
+                </div>
 
-<div>
-    {{el.name}}
-</div>
-{% endfor %}
+                
 
+
+
+                {{ form.utochneniya }}
+                <span>{{ error }}</span>
+                <button type="submit" name="event_add" value="event_add" class="btn btn-success">Success</button>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+</form>
 
 
 {% endblock %}
