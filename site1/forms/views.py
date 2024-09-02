@@ -8,6 +8,7 @@ from .forms import EventForm
 
 
 def index(request):
+    print(request.POST)
 
     error = ''
     if 'event_add' in request.POST:

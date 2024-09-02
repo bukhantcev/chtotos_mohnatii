@@ -10,7 +10,7 @@ class EventForm(ModelForm):
     class Meta:
         model = Event
         fields = ['date', 'type', 'name', 'location', 'svet', 'zvuk', 'video', 'decor', 'rekvizit', 'grim', 'kostum', 'utochneniya']
-
+        required = False
         widgets = {
             "date": DateTimeInput({'class': 'form-control mb-1', 'type': 'datetime-local', 'placeholder': 'Дата и время проведения'}),
             "type": Select(choices=[('1', 'First'), ('2', 'Second')], attrs={'class': 'form-select mb-1'}),
