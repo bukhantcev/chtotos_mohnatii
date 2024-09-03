@@ -8,7 +8,12 @@ from .forms import EventForm
 
 
 def index(request):
-    print(request.POST)
+    #print(request.POST)
+    event_object = Event.objects.order_by('id')
+    for i in event_object:
+
+        print(int(''.join(str(i.date).split(" ")[0].split('-'))))
+    context = {'event': event_object}
 
     error = ''
     if 'event_add' in request.POST:

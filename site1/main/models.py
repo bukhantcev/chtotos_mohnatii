@@ -39,12 +39,13 @@ def calendar (result=''):       #--------------------------------------------DAY
         event_li = ''
         date = datetime.datetime(current_year, current_month, i+1)
         for event in events:
+            id = event[0]
             ev_name = event[3]
             ev_time = f'{str(event[1]).split(' ')[1].split(':')[0]}:{str(event[1]).split(' ')[1].split(':')[1]}'
             ev_date = event[1]
             ev_type = event[2]
             if str(date).split(' ')[0] in str(ev_date).split(' ')[0]:
-                event_li = event_li + f'<li class="event_li"><a class=link-sobitie href="#">{ev_time} {ev_name}({ev_type})</a></li>\n'
+                event_li = event_li + f'<li class="event_li"><button class="btn btn-succes" id="event_id_{id}" name="event_id" onclick="Ajax()" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCardEvent" aria-controls="#offcanvasCardEvent">{ev_time} {ev_name}({ev_type})</button></li>\n'
         result = result + f'<div class="col h-100"><div class="card" style="height: 15rem"><div class="card-header">{i+1} {weekdays[date.weekday()]}</div><div class="card-body"><ul>{event_li}</ul></p></div></div></div>\n'
     return result
 

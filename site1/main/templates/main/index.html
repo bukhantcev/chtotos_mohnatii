@@ -38,7 +38,7 @@
           </div>
         </div>
       </div>
-
+    
     </div>
     <div class="container">
       <div class="row row-cols-1 row-cols-xl-4 row-cols-md-3 g-4">
@@ -49,13 +49,33 @@
       
       </div>
     </div><!--------------------------calendar------------------------>
+<!----------------------------------------------------------------------------ofcanvas-card-event---------------------------------------------->
+
+    <div class="offcanvas offcanvas-top offcanvas-sm-start w-100 h-100 align-items-center" tabindex="-1" id="offcanvasCardEvent" aria-labelledby="offcanvasTopLabel">
+      <div class="offcanvas-header">
+        <h3 class="csrd-info  justify-content-center">Подробная информация</h3>
+
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        dsfsdhgdsfgsdghsdfgdfghdfh
+      </div>
+    </div>
 
 
 
 </main>
 
 
+<script>
+  function Ajax() {
 
+    
+      $.get("{% url 'ajax:First' %}", {text:'Hello, Ajax!'}, function(response){ 
+          console.log('Done');
+      });
+  }
+  </script>
 
 
 {% endblock %}
