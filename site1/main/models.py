@@ -39,13 +39,42 @@ def calendar (result=''):       #--------------------------------------------DAY
         event_li = ''
         date = datetime.datetime(current_year, current_month, i+1)
         for event in events:
-            id = event[0]
-            ev_name = event[3]
+            id = f'event_id{event[0]}'
+            ev_name = event[2]
             ev_time = f'{str(event[1]).split(' ')[1].split(':')[0]}:{str(event[1]).split(' ')[1].split(':')[1]}'
             ev_date = event[1]
-            ev_type = event[2]
+            ev_type = event[12]
+            ev_location = event[3]
+            ev_utochneniya = event[4]
+            ev_staff = f'Свет - {'Да' if event.svet=='on' else 'Нет'}<br>Звук - {'Да' if event.zvuk=='on' else 'Нет'}<br>Видео - {'Да' if event.video=='on' else 'Нет'}<br>Декорации - {'Да' if event.decor=='on' else 'Нет'}<br>Реквизит - {'Да' if event.rekvizit=='on' else 'Нет'}<br>Грим - {'Да' if event.grim=='on' else 'Нет'}<br>Костюм - {'Да' if event.kostum=='on' else 'Нет'}'
             if str(date).split(' ')[0] in str(ev_date).split(' ')[0]:
-                event_li = event_li + f'<li class="event_li"><button class="btn btn-succes" id="event_id_{id}" name="event_id" onclick="Ajax()" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCardEvent" aria-controls="#offcanvasCardEvent">{ev_time} {ev_name}({ev_type})</button></li>\n'
+                event_li = event_li + f'''<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{id}">
+  {ev_time} {ev_name} ({ev_type})
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="{id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{ev_type} {ev_name}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h5>Место проведения: {ev_location}<br></h5>
+        <h5>Описание:<br></h5>
+        <p>{ev_utochneniya}</p>
+        <h5>Вызываются службы:<br></h5>
+        <p>{ev_staff}</p>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>\n'''
         result = result + f'<div class="col h-100"><div class="card" style="height: 15rem"><div class="card-header">{i+1} {weekdays[date.weekday()]}</div><div class="card-body"><ul>{event_li}</ul></p></div></div></div>\n'
     return result
 

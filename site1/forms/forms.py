@@ -13,9 +13,9 @@ class EventForm(ModelForm):
         required = False
         widgets = {
             "date": DateTimeInput({'class': 'form-control mb-1', 'type': 'datetime-local', 'placeholder': 'Дата и время проведения'}),
-            "type": Select(choices=[('1', 'First'), ('2', 'Second')], attrs={'class': 'form-select mb-1'}),
-            "name": Select(choices=[('1', 'First'), ('2', 'Second')], attrs={'class': 'form-select mb-1'}),
-            "location": Select(choices=[('1', 'First'), ('2', 'Second')], attrs={'class': 'form-select mb-1'}),
+            "type": Select(choices=[('Спектакль', 'Спектакль'), ('Репетиция', 'Репетиция')], attrs={'class': 'form-select mb-1'}),
+            "name": Select(choices=[('12', '12'), ('Мет3', 'Мет3')], attrs={'class': 'form-select mb-1'}),
+            "location": Select(choices=[('ГИТИС', 'ГИТИС'), ('Сатира', 'Сатира')], attrs={'class': 'form-select mb-1'}),
 
             "utochneniya": Textarea({'class': 'form-control mb-1', 'placeholder': 'Описание, укзания, примечания и т.д.', 'color': '#ccc'}),
 
