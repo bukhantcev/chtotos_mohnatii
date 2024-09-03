@@ -45,8 +45,8 @@ def calendar (result=''):       #--------------------------------------------DAY
             ev_date = event[1]
             ev_type = event[12]
             ev_location = event[3]
-            ev_utochneniya = event[4]
-            ev_staff = f'Свет - {'Да' if event.svet=='on' else 'Нет'}<br>Звук - {'Да' if event.zvuk=='on' else 'Нет'}<br>Видео - {'Да' if event.video=='on' else 'Нет'}<br>Декорации - {'Да' if event.decor=='on' else 'Нет'}<br>Реквизит - {'Да' if event.rekvizit=='on' else 'Нет'}<br>Грим - {'Да' if event.grim=='on' else 'Нет'}<br>Костюм - {'Да' if event.kostum=='on' else 'Нет'}'
+            ev_utochneniya = f'<h5 style="color: red">Описание:<br></h5><p>{event[4]}</p>' if event[4]!='' else ''
+            ev_staff = f'Свет - {'Да' if event[9]=='on' else 'Нет'}<br>Звук - {'Да' if event[11]=='on' else 'Нет'}<br>Видео - {'Да' if event[10]=='on' else 'Нет'}<br>Декорации - {'Да' if event[5]=='on' else 'Нет'}<br>Реквизит - {'Да' if event[8]=='on' else 'Нет'}<br>Грим - {'Да' if event[6]=='on' else 'Нет'}<br>Костюм - {'Да' if event[7]=='on' else 'Нет'}'
             if str(date).split(' ')[0] in str(ev_date).split(' ')[0]:
                 event_li = event_li + f'''<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{id}">
   {ev_time} {ev_name} ({ev_type})
@@ -57,20 +57,19 @@ def calendar (result=''):       #--------------------------------------------DAY
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{ev_type} {ev_name}</h5>
+        <h3 class="modal-title" id="exampleModalLabel">{ev_type} {ev_name}&nbsp;&nbsp;Время: {ev_time}</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+        </div>
       <div class="modal-body">
-        <h5>Место проведения: {ev_location}<br></h5>
-        <h5>Описание:<br></h5>
-        <p>{ev_utochneniya}</p>
-        <h5>Вызываются службы:<br></h5>
+        <h5 style="color: red">Место проведения: <p style="color: #000"><br>{ev_location}</p><br></h5>
+        
+        {ev_utochneniya}
+        <h5 style="color: red">Вызываются службы:<br></h5>
         <p>{ev_staff}</p>
         
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
