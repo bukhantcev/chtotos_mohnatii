@@ -49,7 +49,7 @@ def calendar (result=''):       #--------------------------------------------DAY
             ev_staff = f'Свет - {'Да' if event[9]=='on' else 'Нет'}<br>Звук - {'Да' if event[11]=='on' else 'Нет'}<br>Видео - {'Да' if event[10]=='on' else 'Нет'}<br>Декорации - {'Да' if event[5]=='on' else 'Нет'}<br>Реквизит - {'Да' if event[8]=='on' else 'Нет'}<br>Грим - {'Да' if event[6]=='on' else 'Нет'}<br>Костюм - {'Да' if event[7]=='on' else 'Нет'}'
             if str(date).split(' ')[0] in str(ev_date).split(' ')[0]:
                 event_li = event_li + f'''<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{id}">
-  {ev_time} {ev_name} ({ev_type})
+  {ev_time} &quot;{ev_name}&quot; ({ev_type})
 </button>
 
 <!-- Modal -->
@@ -57,7 +57,7 @@ def calendar (result=''):       #--------------------------------------------DAY
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 class="modal-title" id="exampleModalLabel">{ev_type} {ev_name}&nbsp;&nbsp;Время: {ev_time}</h3>
+        <h3 class="modal-title" id="exampleModalLabel">{ev_type} &quot;{ev_name}&quot;&nbsp;&nbsp;Время: {ev_time}</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
       <div class="modal-body">

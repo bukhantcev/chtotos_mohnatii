@@ -61,15 +61,20 @@
                     <li class="nav-item">
                       <a class="nav-link" href="#">Материалы к спектаклям</a>
                     </li>
+                    {% if request.user.is_staff %}
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Инструменты
                       </a>
                       <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="min-width: 12rem;">
+                        
+
+                        
                         <li><button type="button" class="btn btn-link text-decoration-none" data-bs-dismiss="offcanvas"
                             aria-label="Close"><a class="nav-link active" aria-current="page"
                               href="{% url 'forms_home' %}">Добавить событие</a></button></li>
+                              
                         <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
                               class="nav-link active" aria-current="page" href="#main">Вторая</a></button></li>
                         <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
@@ -83,8 +88,8 @@
                         <li><button type="button" class="btn btn-link" data-bs-dismiss="offcanvas" aria-label="Close"><a
                               class="nav-link active" aria-current="page" href="#main">Седьмая</a></button></li>
                       </ul>
-                      <button></button>
                     </li>
+                    {% endif %}
                   </ul>
                 </div>
               </div>

@@ -12,7 +12,7 @@ from django.http import HttpResponse
 
 
 def index(request):       #-------------MAIN
-    print(request.POST)
+    print(request.user)
     if 'month' in request.GET:
         setattr(my_calendar, 'current_month', int(request.GET.get('month')))
     if 'year' in request.GET:
