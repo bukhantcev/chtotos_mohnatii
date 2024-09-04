@@ -1,7 +1,7 @@
 import datetime
 from datetime import tzinfo, timezone, timedelta
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import calendar, current_year, current_month, calendar_switch_month, my_calendar, calendar_switch_year
 from django.http import HttpResponse
 
@@ -30,9 +30,10 @@ def index(request):       #-------------MAIN
         setattr(my_calendar, 'current_month', datetime.datetime.now().month)
 
         print('zzzzzzzz')
-
-    return render(request, 'main/index.html', context={'cal':calendar(result=''), 'current_month': my_calendar.month_text[my_calendar.current_month], 'btn_month': calendar_switch_month(), 'current_year': calendar_switch_year()['current_year'], 'next_year': calendar_switch_year()['next_year'], 'real_year': calendar_switch_year()['real_year'], 'year_title': my_calendar.year_title})
-
+    if request.user.is_authenticated:
+        return render(request, 'main/index.html', context={'cal':calendar(result=''), 'current_month': my_calendar.month_text[my_calendar.current_month], 'btn_month': calendar_switch_month(), 'current_year': calendar_switch_year()['current_year'], 'next_year': calendar_switch_year()['next_year'], 'real_year': calendar_switch_year()['real_year'], 'year_title': my_calendar.year_title})
+    else:
+        return redirect('login')
 
 
 

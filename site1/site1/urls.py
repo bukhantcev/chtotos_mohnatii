@@ -9,7 +9,7 @@ urlpatterns = [
     path('users', include('users.urls')),
     path('forms/', include('forms.urls')),
     path('ajax/', include('ajax.urls')),
-    path('registration/', include('accounts.urls'))
+    path('users/', include('accounts.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 # http: // 127.0.0.1: 8000 / accounts / login / длявхода,
