@@ -39,7 +39,7 @@ def calendar (result=''):       #--------------------------------------------DAY
     for i in range(days_quantity):
         event_li = ''
         date = datetime.datetime(current_year, current_month, i+1)
-        event_object = Event.objects.order_by('id')
+        event_object = Event.objects.order_by('date')
         for event in event_object:
             id = f'event_id{event.id}'
             ev_name = event.name
