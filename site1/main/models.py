@@ -56,7 +56,7 @@ def calendar (result=''):       #--------------------------------------------DAY
 </button>
 
 <!-- Modal -->
-<div class="modal fade" style="width: 70%" id="{id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" style="width: 100%" id="{id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

@@ -14,6 +14,7 @@ class EventForm(ModelForm):
         event_type_list = []
         event_name_list = []
         event_location_list = []
+
         try:
 
             for i in event_type:
