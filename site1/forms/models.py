@@ -32,6 +32,50 @@ class Event(models.Model):
 
 
 
+class Event_type(models.Model):
+
+    type = models.CharField('Тип события', max_length=150, default='')
+
+
+
+    def __str__(self):
+        return self.type
+
+    class Meta:
+        verbose_name = 'Тип события'
+        verbose_name_plural = 'Типы событий'
+
+
+class Event_location(models.Model):
+    location = models.CharField('Место проведения', max_length=150, default='')
+    city = models.CharField('Город', max_length=150, default='', blank=True)
+
+
+    def __str__(self):
+        return f'{self.location} {self.city}'
+
+    class Meta:
+        verbose_name = 'Место проведения события'
+        verbose_name_plural = 'Места проведения событий'
+
+
+class Event_name(models.Model):
+    name = models.CharField('Место проведения', max_length=150, default='')
+
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Название события'
+        verbose_name_plural = 'Названия событий'
+
+
+
+
+
+
+
 # events = Event
 # for i in events:
 #     print(i)
