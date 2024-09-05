@@ -19,53 +19,54 @@
     <div class="container-fluid d-flex flex-column" style="padding-top: 8rem;">
         <div class="row">
             <div class="col col-sm-4 offset-sm-4 justify-content-center h-100">
-                {{ form.date }}
-                {{ form.type }}
-                {{ form.name }}
-                {{ form.location }}
-                <h5 class="staf-tittle text-center">Вызываются службы:</h5>
+                <h5>Выбери дату:</h5>
+                {{ form.date }}<br>
+                <h5>Выбери тип:</h5>
+                {{ form.type }}<br>
+                <h5>Выбери название:</h5>
+                {{ form.name }}<br>
+                <h5>Выбери место проведения:</h5>
+                {{ form.location }}<br>
+                <h5 class="staf-tittle">Вызываются службы:</h5>
                 <div class="container-fluid d-flex">
                     <div class="form-check form-switch" style="margin-right: 1rem;">
                         <input class="form-check-input" name="svet" type="checkbox" id="svet" checked>
-                        <label class="form-check-label" for="for">Свет</label>
+                        <label class="form-check-label" for="svet">Свет</label>
                       </div>
                       <div class="form-check form-switch" style="margin-right: 1rem;">
-                        <input class="form-check-input"  name="zvuk" type="checkbox" id="svet" checked>
-                        <label class="form-check-label" for="for">Звук</label>
+                        <input class="form-check-input"  name="zvuk" type="checkbox" id="zvuk" checked>
+                        <label class="form-check-label" for="zvuk">Звук</label>
                       </div>
                       <div class="form-check form-switch" style="margin-right: 1rem;">
-                        <input class="form-check-input" name="video" type="checkbox" id="svet" checked>
-                        <label class="form-check-label" for="for">Видео</label>
+                        <input class="form-check-input" name="video" type="checkbox" id="video" checked>
+                        <label class="form-check-label" for="video">Видео</label>
                       </div>
                       <div class="form-check form-switch" style="margin-right: 1rem;">
-                        <input class="form-check-input" name="decor" type="checkbox" id="svet" checked>
-                        <label class="form-check-label" for="for">Декорации</label>
+                        <input class="form-check-input" name="decor" type="checkbox" id="dekor" checked>
+                        <label class="form-check-label" for="decor">Декорации</label>
                       </div>
                     </div>
                       <div class="container-fluid d-flex" style="margin-right: 1rem;">
                       <div class="form-check form-switch">
-                        <input class="form-check-input" name="rekvizit" type="checkbox" id="svet" checked>
-                        <label class="form-check-label" for="for">Реквизит</label>
+                        <input class="form-check-input" name="rekvizit" type="checkbox" id="rekvizit" checked>
+                        <label class="form-check-label" for="rekvizit">Реквизит</label>
                       </div>
                       <div class="form-check form-switch" style="margin-right: 1rem;">
-                        <input class="form-check-input" name="grim" type="checkbox" id="svet" checked>
-                        <label class="form-check-label" for="for">Грим</label>
+                        <input class="form-check-input" name="grim" type="checkbox" id="grim" checked>
+                        <label class="form-check-label" for="grim">Грим</label>
                       </div>
                       <div class="form-check form-switch" style="margin-right: 1rem;">
-                        <input class="form-check-input" name="kostum" type="checkbox" id="svet" checked>
-                        <label class="form-check-label" for="for">Костюм</label>
+                        <input class="form-check-input" name="kostum" type="checkbox" id="kostum" checked>
+                        <label class="form-check-label" for="kostum">Костюм</label>
                       </div>
-                      {{ event }}
-                </div>
-
-                
-
-
-
-                {{ form.utochneniya }}
+                    
+                </div><br>
+                <h5>Описание:</h5>
+                {{ form.utochneniya }}<br>
                 <span>{{ error }}</span>
                 <button type="submit" name="event_add" value="event_add" class="btn btn-success">Success</button>
             </div>
+            
 
         </div>
     </div>

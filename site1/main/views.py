@@ -4,7 +4,7 @@ from datetime import tzinfo, timezone, timedelta
 from django.shortcuts import render, redirect
 from .models import calendar, current_year, current_month, calendar_switch_month, my_calendar, calendar_switch_year
 from django.http import HttpResponse
-
+from forms.models import Event
 
 
 
@@ -12,7 +12,7 @@ from django.http import HttpResponse
 
 
 def index(request):       #-------------MAIN
-    print(request.user)
+
     if 'month' in request.GET:
         setattr(my_calendar, 'current_month', int(request.GET.get('month')))
     if 'year' in request.GET:

@@ -8,9 +8,6 @@ from .forms import EventForm
 
 
 def index(request):
-    for i in request.POST:
-
-        print(i)
     event_object = Event.objects.order_by('id')
     for i in event_object:
 
