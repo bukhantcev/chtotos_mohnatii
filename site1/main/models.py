@@ -73,6 +73,7 @@ def calendar (result=''):       #--------------------------------------------DAY
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="?text_message={event.id}" type="submit">Отравить в телегу</a>
       </div>
     </div>
   </div>
