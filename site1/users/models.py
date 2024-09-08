@@ -1,4 +1,7 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
 
 class Users (models.Model):
     first_name = models.CharField('Имя', max_length=50)
@@ -12,4 +15,5 @@ class Users (models.Model):
         verbose_name = 'Клиент'
         verbose_name_plural = 'Клиенты'
 
+from django.contrib.auth.models import User
 

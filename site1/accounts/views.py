@@ -6,7 +6,8 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.views import generic
 from django.contrib.auth.models import User
-
+from .forms import Phone
+from .models import Profile
 
 
 def user_login(request):
@@ -38,6 +39,7 @@ def registration(request):
 
     if request.method == 'POST':
         form = RegisterForm(request.POST)
+        print(request.POST)
         if form.is_valid():
 
             user = form.save(commit=False)
@@ -55,6 +57,29 @@ def logout_view(request):
     logout(request)
 
     return redirect('login')
+
+
+
+def add_phone(request):
+    if request.method == 'GET':
+        form = Phone()
+        return render(request, 'add_phone.html')
+
+    if request.method == 'POST':
+        form = Phone(request.POST)
+        print(form)
+        if form.is_valid():
+
+            phone = form.save(commit=False)
+
+
+            phone.save()
+            print('ok')
+            return redirect('home')
+        else:
+            print('zalupu')
+
+            return render(request, 'add_phone.html', {'form': form})
 
 
 
