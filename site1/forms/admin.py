@@ -12,6 +12,7 @@ admin.site.register(Event_location)
 class EventAdmin(admin.ModelAdmin):
     list_display = ('date', 'name', 'type', 'location' ,)
     liink_display = ('date')
+    list_editable = ('type',)
 
 
 # Register your models here.

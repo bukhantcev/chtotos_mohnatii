@@ -49,7 +49,7 @@ def calendar (result=''):       #--------------------------------------------DAY
             ev_type = event.type
             ev_location = event.location
             ev_utochneniya = f'<h5 style="color: red">Описание:<br></h5><p>{event.utochneniya}</p>' if event.utochneniya!='' else ''
-            ev_staff = f'Свет - {'Да' if event.svet=='on' else 'Нет'}<br>Звук - {'Да' if event.zvuk=='on' else 'Нет'}<br>Видео - {'Да' if event.video=='on' else 'Нет'}<br>Декорации - {'Да' if event.decor=='on' else 'Нет'}<br>Реквизит - {'Да' if event.rekvizit=='on' else 'Нет'}<br>Грим - {'Да' if event.grim=='on' else 'Нет'}<br>Костюм - {'Да' if event.kostum=='on' else 'Нет'}'
+            ev_staff = f'Свет - {event.svet}<br>Звук - {event.zvuk}<br>Видео - {event.video}<br>Декорации - {event.decor}<br>Реквизит - {event.rekvizit}<br>Грим - {event.grim}<br>Костюм - {event.kostum}'
             if str(date).split(' ')[0] in str(ev_date).split(' ')[0]:
                 event_li = event_li + f'''<button type="button" class="btn btn-primary" style="font-size: 0.8rem; margin-bottom: 0.1rem; width: 100%" data-bs-toggle="modal" data-bs-target="#{id}">
   {ev_time} &quot;{ev_name}&quot; ({ev_type})

@@ -12,9 +12,6 @@ def index(request):
 
 
     event_object = Event.objects.order_by('id')
-    for i in event_object:
-
-        print(int(''.join(str(i.date).split(" ")[0].split('-'))))
     context = {'event': event_object}
 
     error = ''
