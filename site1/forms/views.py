@@ -2,12 +2,15 @@ from lib2to3.fixes.fix_input import context
 from xxlimited_35 import error
 
 from django.shortcuts import render, redirect
-from .models import Event
+from .models import Event, Event_type, Event_name, Event_location
 from .forms import EventForm
 # Create your views here.
 
 
 def index(request):
+
+
+
     event_object = Event.objects.order_by('id')
     for i in event_object:
 
