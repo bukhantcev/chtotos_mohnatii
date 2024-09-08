@@ -2,6 +2,7 @@ import datetime
 from calendar import monthrange
 from .db_manager import Events
 from forms.models import Event
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -27,7 +28,7 @@ class Calendar:
 my_calendar = Calendar
 
 
-def calendar (result=''):       #--------------------------------------------DAYS
+def calendar (result='', user_valid=False):       #--------------------------------------------DAYS
     current_year = my_calendar.current_year
     current_month = my_calendar.current_month
     days_quantity = monthrange(current_year, current_month)[1]
@@ -36,10 +37,15 @@ def calendar (result=''):       #--------------------------------------------DAY
     event_dates = Events.get_date(Events)
 
 
+    button_tg1 = '<a href="?text_message=' if user_valid == True else ''
+    button_tg2 = '" type="submit">Отравить в телегу</a>' if user_valid == True else ''
+
+
     for i in range(days_quantity):
         event_li = ''
         date = datetime.datetime(current_year, current_month, i+1)
         event_object = Event.objects.order_by('date')
+
         for event in event_object:
             id = f'event_id{event.id}'
             ev_name = event.name
@@ -65,7 +71,7 @@ def calendar (result=''):       #--------------------------------------------DAY
         </div>
       <div class="modal-body">
         <h5 style="color: red">Место проведения: <p style="color: #000"><br>{ev_location}</p><br></h5>
-        
+
         {ev_utochneniya}
         <h5 style="color: red">Вызываются службы:<br></h5>
         <p>{ev_staff}</p>
@@ -73,7 +79,7 @@ def calendar (result=''):       #--------------------------------------------DAY
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <a href="?text_message={event.id}" type="submit">Отравить в телегу</a>
+        {button_tg1}{event.id if user_valid == True else ''}{button_tg2}
       </div>
     </div>
   </div>

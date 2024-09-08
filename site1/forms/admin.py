@@ -10,9 +10,9 @@ admin.site.register(Event_location)
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    list_display = ('date', 'name', 'type', 'location' ,)
+    list_display = ('date', 'name', 'type', 'location', 'svet', 'zvuk', 'video', 'decor', 'rekvizit', 'grim', 'kostum',)
     liink_display = ('date')
-    list_editable = ('type',)
+    list_editable = ('name', 'type', 'location', 'svet', 'zvuk', 'video', 'decor', 'rekvizit', 'grim', 'kostum',)
 
 
 # Register your models here.
