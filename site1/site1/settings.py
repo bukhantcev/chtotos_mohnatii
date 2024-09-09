@@ -9,8 +9,10 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
+
+from django.conf.global_settings import SECRET_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,11 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-i3*@odpn&m2n3w^gsbezwu7em4cg*znm4u7m1vn*4!q-^l+vn('
+#SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["78.111.88.18"]
 
 
 # Application definition
@@ -139,4 +142,6 @@ STATICFILES_DIRS = [
 
 LOGIN_REDIRECT_URL =  '/'
 LOGOUT_REDIRECT_URL =  '/'
+
+TIMEOUT = 20
 

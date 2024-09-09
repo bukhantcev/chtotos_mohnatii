@@ -1,13 +1,12 @@
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.forms import UserCreationForm
+
 from django.shortcuts import render, redirect
 from .forms import LoginForm, RegisterForm
 from django.http import HttpResponse
 from django.contrib import messages
-from django.views import generic
-from django.contrib.auth.models import User
+
 from .forms import Phone
-from .models import Profile
+
 
 
 def user_login(request):

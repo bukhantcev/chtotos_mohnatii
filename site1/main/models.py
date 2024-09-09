@@ -1,12 +1,8 @@
 import datetime
 from calendar import monthrange
-from .db_manager import Events
+
 from forms.models import Event
-from django.contrib.auth.models import User
 
-# Create your models here.
-
-# Calendar
                  #----------------------------------------CALENDAR
 month_text = {1: 'Январь', 2: 'Февраль', 3: 'Март', 4: 'Апрель', 5: 'Май', 6: 'Июнь', 7: 'Июль', 8: 'Август',
                   9: 'Сентябрь', 10: 'Октябрь', 11: 'Ноябрь', 12: 'Декабрь'}
@@ -33,8 +29,7 @@ def calendar (result='', user_valid=False):       #-----------------------------
     current_month = my_calendar.current_month
     days_quantity = monthrange(current_year, current_month)[1]
     weekdays = {0: 'Понедельник', 1: 'Вторник', 2: 'Среда', 3: 'Четверг', 4: 'Пятница', 5: 'Суббота', 6: 'Воскресенье'}
-    events = Events.events(Events)
-    event_dates = Events.get_date(Events)
+
 
 
     button_tg1 = '<a href="?text_message=' if user_valid == True else ''

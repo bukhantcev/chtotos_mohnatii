@@ -1,7 +1,7 @@
-from random import choices
+
 
 from django.db import models
-from django.template.context_processors import request
+
 from datetime import datetime
 
 

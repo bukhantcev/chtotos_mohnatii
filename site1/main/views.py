@@ -1,12 +1,11 @@
 import datetime
-from datetime import tzinfo, timezone, timedelta
+
 
 from django.shortcuts import render, redirect
-from .models import calendar, current_year, current_month, calendar_switch_month, my_calendar, calendar_switch_year
-from django.http import HttpResponse
-from forms.models import Event
+from .models import calendar, calendar_switch_month, my_calendar, calendar_switch_year
+
 from telegram.telegram_base import send_telegram_message
-from django.contrib.auth.models import User
+
 
 
 
