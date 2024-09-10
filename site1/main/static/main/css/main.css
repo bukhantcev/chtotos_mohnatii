@@ -15,6 +15,11 @@
     --bs-purple: #d2cef5;
 
     --bs-btn-hover-color: #bbb5f3;
+    --text-hover-color: rgb(100, 84, 245);
+
+    --text-color: #000;
+    --shadow-color: rgb(82, 65, 236);
+    --bg-color-today: #07bc25;
 }
 
 
@@ -32,13 +37,12 @@ body{
     
 }
 .navbar-light .navbar-nav:hover{
-    color: rgb(24, 4, 203);
-    box-shadow: 2px 2px 2px 1px rgba(0,0,0, .1);
+    color: var(--shadow-color);
+    box-shadow: 0px 0px 2px 3px rgba(24, 4, 203, .1);
 
 }
-.nav-link.dropdown-toggle:hover{
-    color: rgb(24, 4, 203);
-    box-shadow: 2px 2px 2px 1px rgba(0,0,0, .1);
+.navbar-light .navbar-nav .nav-link:hover{
+    color: var(--text-hover-color);
 }
 
 .wrapper{

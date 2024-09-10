@@ -63,12 +63,15 @@
       </div>
     </div>
 ------------------------------------>
-
+<a id="auto-scroll" href="{{ today }}"></a> <!--Autoscrol today-->
 
 </main>
 
+<script>
+  window.addEventListener('load', () => {
+    document.getElementById('auto-scroll').click();
+});
 
-
-
+</script>
 
 {% endblock %}

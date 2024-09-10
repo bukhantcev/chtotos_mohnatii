@@ -1,8 +1,8 @@
 import datetime
 
-
+from dateutil.utils import today
 from django.shortcuts import render, redirect
-from .models import calendar, calendar_switch_month, my_calendar, calendar_switch_year
+from .models import calendar, calendar_switch_month, my_calendar, calendar_switch_year, autoscroll
 
 from telegram.telegram_base import send_telegram_message
 
@@ -13,7 +13,6 @@ from telegram.telegram_base import send_telegram_message
 
 
 def index(request):       #-------------MAIN
-
     if 'text_message' in request.GET:
         if request.user.is_staff:
             send_telegram_message(request.GET.get('text_message'))
@@ -33,8 +32,19 @@ def index(request):       #-------------MAIN
         setattr(my_calendar, 'current_year', datetime.datetime.now().year)
         setattr(my_calendar, 'year_title', datetime.datetime.now().year)
         setattr(my_calendar, 'current_month', datetime.datetime.now().month)
-    if request.user.is_authenticated:
-        return render(request, 'main/index.html', context={'cal':calendar(result='', user_valid=request.user.is_staff), 'current_month': my_calendar.month_text[my_calendar.current_month], 'btn_month': calendar_switch_month(), 'current_year': calendar_switch_year()['current_year'], 'next_year': calendar_switch_year()['next_year'], 'real_year': calendar_switch_year()['real_year'], 'year_title': my_calendar.year_title})
+    if request.user.is_authenticated:#-------TODAY
+        today = f'#id_card_{datetime.datetime.now().day}'
+        card_bg_color = 'background-color: #07bc25'
+        if 'month' in request.GET:
+            if int(request.GET.get('month')) == datetime.datetime.now().month:
+                today = autoscroll()
+                card_bg_color = 'background-color: #07bc25'
+            else:
+                today = '#main'
+                card_bg_color = ''#------TODAY
+
+
+        return render(request, 'main/index.html', context={'cal':calendar(result='', user_valid=request.user.is_staff,card_header_bg_color=card_bg_color), 'current_month': my_calendar.month_text[my_calendar.current_month], 'btn_month': calendar_switch_month(), 'current_year': calendar_switch_year()['current_year'], 'next_year': calendar_switch_year()['next_year'], 'real_year': calendar_switch_year()['real_year'], 'today': today, 'year_title': my_calendar.year_title})
     else:
         return redirect('login')
 
