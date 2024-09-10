@@ -9,8 +9,8 @@ import os
 
 
 # Тут будет ваш токен, который вы получили при создании бота
-BOT_TOKEN = os.environ.get('BOT_TOKEN')
-#BOT_TOKEN = '5641597027:AAGuUaoQpMPmsxqZwXz1KNwJF6I1P1Pvih0'
+#BOT_TOKEN = os.environ.get('BOT_TOKEN')
+BOT_TOKEN = '5641597027:AAGuUaoQpMPmsxqZwXz1KNwJF6I1P1Pvih0'
 
 # Тут нужно указать название канала в ссылке,которое начинается с @
 # Тут я указал для примера созданный канал

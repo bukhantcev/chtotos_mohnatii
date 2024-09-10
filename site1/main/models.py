@@ -1,7 +1,7 @@
 import datetime
 from calendar import monthrange
 
-from forms.models import Event
+from forms.models import Event, Event_type
 from urllib3 import request
 
 #----------------------------------------CALENDAR
@@ -42,8 +42,10 @@ def calendar (result='', user_valid=False, card_header_bg_color=''):       #----
         event_li = ''
         date = datetime.datetime(current_year, current_month, i+1)
         event_object = Event.objects.order_by('date')
+        event_type_for_color = Event_type.objects
 
         for event in event_object:
+
 
 
             id = f'event_id{event.id}'
@@ -52,11 +54,8 @@ def calendar (result='', user_valid=False, card_header_bg_color=''):       #----
             ev_time =   f'{str(ev_date).split(' ')[1].split(':')[0]}:{str(ev_date).split(' ')[1].split(':')[1]}'
 
             ev_type = event.type
-
-            btn_color = ''
-            if str(event.type) == "Спектакль":
-
-                btn_color = 'background-color: #000; border-color: #000'
+            event_type_for_color = Event_type.objects.get(type=str(ev_type))#------COLOR EVENT
+            btn_color = f'background-color: {event_type_for_color.button_color}; border-color: {event_type_for_color.button_color}'#------COLOR EVENT
             ev_location = event.location
             ev_utochneniya = f'<h5 style="color: red">Описание:<br></h5><p>{event.utochneniya}</p>' if event.utochneniya!='' else ''
             ev_staff = f'Свет - {event.svet}<br>Звук - {event.zvuk}<br>Видео - {event.video}<br>Декорации - {event.decor}<br>Реквизит - {event.rekvizit}<br>Грим - {event.grim}<br>Костюм - {event.kostum}'

@@ -1,7 +1,7 @@
 
 
 from django.db import models
-
+from colorfield.fields import ColorField
 from datetime import datetime
 
 
@@ -10,6 +10,7 @@ class Event_type(models.Model):
 
 
     type = models.CharField('Тип мероприятия', max_length=150)
+    button_color = ColorField(default='#000', verbose_name='Цвет кнопки')
 
 
 
@@ -61,7 +62,7 @@ class Event(models.Model):
     rekvizit = models.CharField(choices=Staff.choices,verbose_name='Реквизит', max_length=150, default=Staff.ANSWER_YES)
     grim = models.CharField(choices=Staff.choices,verbose_name='Грим', max_length=150, default=Staff.ANSWER_YES)
     kostum = models.CharField(choices=Staff.choices,verbose_name='Костюм', max_length=150, default=Staff.ANSWER_YES)
-    utochneniya = models.TextField(verbose_name='Уточнения', max_length=150)
+    utochneniya = models.TextField(verbose_name='Уточнения', max_length=150, blank=True)
 
     def __str__(self):
         return f'{self.date:%B %d, %Y} {self.type} "{self.name}"  Время: {str(self.date).split(' ')[1].split(':')[0]}:{str(self.date).split(' ')[1].split(':')[1]}'

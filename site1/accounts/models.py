@@ -25,4 +25,4 @@ class Profile(models.Model):
 
     class Meta:
         verbose_name = 'Сотрудник'
-        verbose_name_plural = 'Сотрудникиn'
+        verbose_name_plural = 'Сотрудники'

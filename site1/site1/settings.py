@@ -35,10 +35,13 @@ ALLOWED_HOSTS = ["78.111.88.18", '127.0.0.1']
 
 INSTALLED_APPS = [
     'main',
+    'room',
     'accounts',
     'users',
     'forms',
     'ajax',
+    'colorfield',
+    'admin_interface',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
