@@ -4,7 +4,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def FirstAjax(request):
-    print(request.GET)
     text = request.GET['text']
     return HttpResponse('All Done!')
 

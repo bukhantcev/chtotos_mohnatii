@@ -13,7 +13,6 @@ def user_login(request):
     if request.method == 'POST':
 
         form = LoginForm(request.POST)
-        print(form)
         if form.is_valid():
             cd = form.cleaned_data
             user = authenticate(username=cd['username'], password=cd['password'])
@@ -31,18 +30,15 @@ def user_login(request):
 
 
 def registration(request):
-    print(request.POST)
     if request.method == 'GET':
         form = RegisterForm()
         return render(request, 'signup.html', {'form': form})
 
     if request.method == 'POST':
         form = RegisterForm(request.POST)
-        print(request.POST)
         if form.is_valid():
 
             user = form.save(commit=False)
-            print(user)
             user.username = user.username.lower()
             user.save()
             messages.success(request, 'You have singed up successfully.')
@@ -66,17 +62,14 @@ def add_phone(request):
 
     if request.method == 'POST':
         form = Phone(request.POST)
-        print(form)
         if form.is_valid():
 
             phone = form.save(commit=False)
 
 
             phone.save()
-            print('ok')
             return redirect('home')
         else:
-            print('zalupu')
 
             return render(request, 'add_phone.html', {'form': form})
 
