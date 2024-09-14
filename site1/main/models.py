@@ -81,7 +81,7 @@ def calendar (result='', user_valid=False, card_header_bg_color=''):       #----
         
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
         {button_tg1}{event.id if user_valid == True else ''}{button_tg2}
       </div>
     </div>
