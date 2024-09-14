@@ -65,7 +65,7 @@ class Event(models.Model):
     utochneniya = models.TextField(verbose_name='Уточнения', max_length=150, blank=True)
 
     def __str__(self):
-        return f'{self.date:%B %d, %Y} {self.type} "{self.name}"  Время: {str(self.date).split(' ')[1].split(':')[0]}:{str(self.date).split(' ')[1].split(':')[1]}'
+        return f'{self.date:%B %d, %Y} {self.type} "{self.name}"  Время: {str(self.date).split(" ")[1].split(":")[0]}:{str(self.date).split(" ")[1].split(":")[1]}'
 
     class Meta:
         verbose_name = 'Событие'

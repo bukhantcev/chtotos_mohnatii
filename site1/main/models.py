@@ -51,7 +51,7 @@ def calendar (result='', user_valid=False, card_header_bg_color=''):       #----
             id = f'event_id{event.id}'
             ev_name = event.name
             ev_date = event.date
-            ev_time =   f'{str(ev_date).split(' ')[1].split(':')[0]}:{str(ev_date).split(' ')[1].split(':')[1]}'
+            ev_time =   f'{str(ev_date).split(" ")[1].split(":")[0]}:{str(ev_date).split(" ")[1].split(":")[1]}'
 
             ev_type = event.type
             event_type_for_color = Event_type.objects.get(type=str(ev_type))#------COLOR EVENT
