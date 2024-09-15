@@ -17,12 +17,12 @@ BOT_TOKEN = os.environ.get('BOT_TOKEN')
 CHAT_ID = "-1002403221230"
 
 
-def send_telegram_message(id):
+def send_telegram_message(id, author=''):
     event = get_object_or_404(Event,id=id)
     ev_data = f'{str(event.date).split(" ")[0].split("-")[2]}.{str(event.date).split(" ")[0].split("-")[1]}.{str(event.date).split(" ")[0].split("-")[0]}'
     ev_time = f'{str(event.date).split(" ")[1].split(":")[0]}:{str(event.date).split(" ")[1].split(":")[1]}'
     ev_staff = f'Свет - {event.svet}\nЗвук - {event.zvuk}\nВидео - {event.video}\nДекорации - {event.decor}\nРеквизит - {event.rekvizit}\nГрим - {event.grim}\nКостюм - {event.kostum}'
-    text = text_message = f'Дата: {ev_data}\n\nВремя: {ev_time}\n\nМесто проведения: {event.location}\n\n{event.type} "{event.name}"\n\nВызываются службы: \n{ev_staff}\n\nОписание: {event.utochneniya}'
+    text = text_message = f'{author}\n\nДата: {ev_data}\n\nВремя: {ev_time}\n\nМесто проведения: {event.location}\n\n{event.type} "{event.name}"\n\nВызываются службы: \n{ev_staff}\n\nОписание: {event.utochneniya}'
     # Используется метод sendMessage API Telegram
     # Обратите внимание , что мы тут используем BOT_TOKEN
     api_url = f'https://api.telegram.org/bot{BOT_TOKEN}/sendMessage'

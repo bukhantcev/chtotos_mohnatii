@@ -1,9 +1,9 @@
 import datetime
 from calendar import monthrange
 
-from forms.models import Event, Event_type
-from urllib3 import request
 
+
+from forms.models import Event, Event_type
 #----------------------------------------CALENDAR
 month_text = {1: 'Январь', 2: 'Февраль', 3: 'Март', 4: 'Апрель', 5: 'Май', 6: 'Июнь', 7: 'Июль', 8: 'Август',
                   9: 'Сентябрь', 10: 'Октябрь', 11: 'Ноябрь', 12: 'Декабрь'}
@@ -25,7 +25,7 @@ class Calendar:
 my_calendar = Calendar
 
 
-def calendar (result='', user_valid=False, card_header_bg_color=''):       #--------------------------------------------DAYS
+def calendar (result='', user_valid=False, card_header_bg_color='', author=''):       #--------------------------------------------DAYS
     current_year = my_calendar.current_year
     current_month = my_calendar.current_month
     days_quantity = monthrange(current_year, current_month)[1]
@@ -77,7 +77,9 @@ def calendar (result='', user_valid=False, card_header_bg_color=''):       #----
 
         {ev_utochneniya}
         <h5 style="color: red">Вызываются службы:<br></h5>
-        <p>{ev_staff}</p>
+        <p>{ev_staff}</p><br>
+        <p style="color: #ccc;">{datetime.datetime.now().date():%e %B %Y} {author}</p>
+        
         
       </div>
       <div class="modal-footer">

@@ -13,9 +13,10 @@ from telegram.telegram_base import send_telegram_message
 
 
 def index(request):       #-------------MAIN
+    author = f"{request.user.first_name} {request.user.last_name}"
     if 'text_message' in request.GET:
         if request.user.is_staff:
-            send_telegram_message(request.GET.get('text_message'))
+            send_telegram_message(request.GET.get('text_message'), author=author)
             return(redirect('/'))
     if 'month' in request.GET:
         setattr(my_calendar, 'current_month', int(request.GET.get('month')))
@@ -44,7 +45,7 @@ def index(request):       #-------------MAIN
                 card_bg_color = ''#------TODAY
 
 
-        return render(request, 'main/index.html', context={'cal':calendar(result='', user_valid=request.user.is_staff,card_header_bg_color=card_bg_color), 'current_month': my_calendar.month_text[my_calendar.current_month], 'btn_month': calendar_switch_month(), 'current_year': calendar_switch_year()['current_year'], 'next_year': calendar_switch_year()['next_year'], 'real_year': calendar_switch_year()['real_year'], 'today': today, 'year_title': my_calendar.year_title})
+        return render(request, 'main/index.html', context={'cal':calendar(result='', user_valid=request.user.is_staff,card_header_bg_color=card_bg_color, author=author), 'current_month': my_calendar.month_text[my_calendar.current_month], 'btn_month': calendar_switch_month(), 'current_year': calendar_switch_year()['current_year'], 'next_year': calendar_switch_year()['next_year'], 'real_year': calendar_switch_year()['real_year'], 'today': today, 'year_title': my_calendar.year_title})
     else:
         return redirect('login')
 
