@@ -78,7 +78,7 @@ def calendar (result='', user_valid=False, card_header_bg_color='', author=''): 
         {ev_utochneniya}
         <h5 style="color: red">Вызываются службы:<br></h5>
         <p>{ev_staff}</p><br>
-        <p style="color: #ccc;">{datetime.datetime.now().date():%e %B %Y} {author}</p>
+        <p style="color: #ccc;">{author}</p>
         
         
       </div>
