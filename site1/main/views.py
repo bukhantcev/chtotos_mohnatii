@@ -13,7 +13,10 @@ from telegram.telegram_base import send_telegram_message
 
 
 def index(request):       #-------------MAIN
-    author = f"{request.user.first_name} {request.user.last_name}"
+    try:
+        author = f"{request.user.first_name} {request.user.last_name}"
+    except:
+        author = request.user.username
     if 'text_message' in request.GET:
         if request.user.is_staff:
             send_telegram_message(request.GET.get('text_message'), author=author)
