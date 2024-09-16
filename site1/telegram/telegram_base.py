@@ -10,11 +10,13 @@ import os
 
 # Тут будет ваш токен, который вы получили при создании бота
 BOT_TOKEN = os.environ.get('BOT_TOKEN')
-#BOT_TOKEN = '5641597027:AAGuUaoQpMPmsxqZwXz1KNwJF6I1P1Pvih0'
+#BOT_TOKEN = '7455751799:AAGdWERD0n5VwCfHLae-5DGtz4grYfO4Guw'
 
 # Тут нужно указать название канала в ссылке,которое начинается с @
 # Тут я указал для примера созданный канал
-CHAT_ID = "-1002403221230"
+CHAT_ID = "-1002170807806"
+THREAD_ID = '2'
+
 
 
 def send_telegram_message(id, author=''):
@@ -31,6 +33,7 @@ def send_telegram_message(id, author=''):
     input_data = json.dumps(
         {
             'chat_id': CHAT_ID,
+            'message_thread_id' : THREAD_ID,
             'text': text,
         }
     ).encode()
