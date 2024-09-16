@@ -6,10 +6,10 @@ import json
 from forms.models import Event
 from django.shortcuts import get_object_or_404
 import os
-
+from .input import BOT_TOKEN
 
 # Тут будет ваш токен, который вы получили при создании бота
-BOT_TOKEN = os.environ.get('BOT_TOKEN')
+BOT_TOKEN = BOT_TOKEN
 
 
 # Тут нужно указать название канала в ссылке,которое начинается с @
