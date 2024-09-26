@@ -92,11 +92,20 @@
   </div>
   <script src="../../static/main/js/bootstrap5.js"></script>
   <script src="../../static/main/js/icon_awesome.js"></script>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 
 
 
 
+
+  <script>
+    let tg = window.Telegram.WebApp;
+    window.addEventListener('load', () => {
+      tg.expand();
+  });
+  
+  </script>
 </body>
 
 </html>
