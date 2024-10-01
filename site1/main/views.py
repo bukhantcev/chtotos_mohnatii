@@ -3,8 +3,13 @@ import datetime
 from dateutil.utils import today
 from django.shortcuts import render, redirect
 from .models import calendar, calendar_switch_month, my_calendar, calendar_switch_year, autoscroll
+from forms.models import Event_name, Event, Event_type, Event_location
 
 from telegram.telegram_base import send_telegram_message
+from forms.parser import create_event
+
+from django.forms.models import model_to_dict
+
 
 
 
@@ -13,6 +18,33 @@ from telegram.telegram_base import send_telegram_message
 
 
 def index(request):       #-------------MAIN
+    if "command" in request.GET:    #-----ПАРСИНГ С САЙТА
+        if 'go_parsing' in request.GET.get('command'):
+            event_names = Event_name.objects.all()
+
+            for name in create_event():
+                event_names = Event_name.objects.all()
+                index = 0
+                for event in event_names:
+
+                    if name['name'] == str(event):
+                        index = 1
+                if index == 0:
+                    record = Event_name(name=name['name'])
+                    record.save()
+
+            for new_event in create_event():
+                record = Event(date=new_event['date'], name=Event_name.objects.get(name=new_event['name']), type=Event_type.objects.get(type="Спектакль"), location=Event_location.objects.get(location='ГИТИС'))
+                record.save()
+        return redirect('/')
+                #--------ПАРСИНГ С САЙТА
+
+
+
+
+
+
+
     try:
         author = f"{request.user.first_name} {request.user.last_name}"
     except:

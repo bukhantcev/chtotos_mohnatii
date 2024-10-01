@@ -6,3 +6,5 @@ gunicorn==22.0.0
 crispy-bootstrap4
 django-colorfield
 django-admin-interface
+beautifulsoup4
+ssl
