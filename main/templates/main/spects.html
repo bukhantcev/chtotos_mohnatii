@@ -39,7 +39,7 @@
           <button type="button" class="btn btn-secondary" style="margin-top: 15px; margin-bottom: 0px;" data-bs-dismiss="modal">Отмена</button>
           <form action="" method="post">
             {% csrf_token %}
-          <button type="submit" name="deleteSpect" value="{{spect.id}}" class="btn btn-primary">Удалить</button>
+          <button type="submit" name="deleteSpect" value="{{spect.id}}" style="background-color: red;" class="btn btn-primary">Удалить</button>
         </form>
         </div>
       </div>

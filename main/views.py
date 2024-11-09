@@ -245,7 +245,10 @@ def load_file(request):
                         return HttpResponse(f)
 
                 else:
-                    f'application/{format_file}'
+                    return FileResponse(open(request.GET.get('path'), 'rb'),
+                                    filename=file,
+                                    as_attachment=True,
+                                    )
                 return FileResponse(open(request.GET.get('path'), 'rb'),
                                     filename=file,
                                     as_attachment=False,

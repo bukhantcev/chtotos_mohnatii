@@ -81,6 +81,7 @@ footer.footer{
     background-color: #632fbc;
     border-color: #0d6efd;
     width: 15rem;
+    margin-bottom: 0.2rem;
   }
   .btn-custom-delete {
     color: #fff;

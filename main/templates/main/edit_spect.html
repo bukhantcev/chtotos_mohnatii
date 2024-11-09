@@ -26,13 +26,18 @@
                 </form>
                 
                 {% else %}
+                <div class="col d-none d-sm-flex">
               <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="col d-flex d-sm-none">
+                <iframe width="350" height="198" src="https://www.youtube.com/embed/{{ video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              </div>
               <br>{% if request.user.is_staff %}<button id="btn-edit-video" class="btn btn-primary" onclick="VideoURL(this)" type="button">Изменить ссылку на видео</button>{% endif %}
               <form accept="" method="post" id="myForm", enctype="multipart/form-data">
                 {% csrf_token %}
              
               <br><input type="text" id="inputVideoURL" name="newVideo" style="display: none;" value="{{ spect.video }}">
-              <button id="btn-save-video" name="btn-save-video" value="{{ spect.id }}" class="btn btn-custom" onclick="VideoURL()" type="submit" style="display: none;">Сохранить</button>
+              <button id="btn-save-video" name="btn-save-video" value="{{ spect.id }}" class="btn btn-custom" onclick="VideoURL()" type="submit" style="display: none; margin-bottom: 3rem;">Сохранить</button>
             </form>
 
                 {% endif %}
@@ -56,7 +61,7 @@
     function VideoURL(me){
         document.getElementById('inputVideoURL').setAttribute('style', '');
         me.setAttribute('style', 'display: none');
-        document.getElementById('btn-save-video').setAttribute('style', '');
+        document.getElementById('btn-save-video').setAttribute('style', 'margin-bottom: 3rem;');
     }
 </script>
 <script>
